@@ -1,8 +1,17 @@
 // JavaScript code for popup
 
-function popupImage(src) {
-  var popup = window.open("", "Popup", "width=800,height=600");
-  popup.document.write("<img src='" + src + "' style='width:100%;' />");
+function openModal() {
+  var modal = document.getElementById("myModal");
+  modal.style.display = "block";
+  var span = document.getElementsByClassName("close")[0];
+  span.onclick = function() {
+    modal.style.display = "none";
+  };
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
 }
 
 

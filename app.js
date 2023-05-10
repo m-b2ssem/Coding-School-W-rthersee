@@ -14,27 +14,24 @@ function openModal() {
   };
 }
 
-
-
-$(document).ready(function() {
-    $(window).ready(function() {
-      $("h1,h2").each(function() {
-        // Check if the header is visible in the viewport
-        if ($(this).offset().top < $(window).scrollTop() + $(window).height()) {
-          // Animate the header to fade in and slide in from the left
-          $(this).delay(300).animate({
-            opacity: 1,
-            left: '0'
-          }, 1000);
-        }
-      });
-    });
+window.addEventListener('load', function() {
+  var headers = document.querySelectorAll('h1, h2');
   
-    // Set the initial position of the headers to the left of the viewport
-    $('h1,h2').css({
-      'opacity': 0,
-      'position': 'relative',
-      'left': '-100px'
-    });
+  headers.forEach(function(header) {
+    
+    if (header.offsetTop < window.pageYOffset + window.innerHeight) {
+     
+      setTimeout(function() {
+        header.style.opacity = 1;
+        header.style.left = '0';
+      }, 300);
+    }
   });
+  
 
+  headers.forEach(function(header) {
+    header.style.opacity = 0;
+    header.style.position = 'relative';
+    header.style.left = '-100px';
+  });
+});
